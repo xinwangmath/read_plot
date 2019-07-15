@@ -34,8 +34,9 @@ def main():
     print(data_dict)
     count = 1
     for class_name in data_dict:
-        xy_matrix = np.array(data_dict[class_name])
-        xy_matrix = np.sort(xy_matrix, axis=0)  # sort (x, y) pairs by the x coordinates
+        xy_list = data_dict[class_name]
+        xy_list.sort(key=lambda x:x[0])  # sort the list of (x, y) pairs by the x coordinates.
+        xy_matrix = np.array(xy_list)
 
         plt.subplot(len(data_dict), 1, count)
         plt.plot(xy_matrix[:, 0], xy_matrix[:, 1])
@@ -45,7 +46,7 @@ def main():
 
         count += 1
     plt.tight_layout()  # adjust layout for sub-figures.
-    plt.show()
+    #plt.show()
     plt.savefig("test_plot.pdf")
 
 if __name__ == "__main__":
