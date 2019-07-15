@@ -46,6 +46,7 @@ def main():
         count += 1
     plt.tight_layout()  # adjust layout for sub-figures.
     plt.show()
+    plt.savefig("test_plot.pdf")
 
 if __name__ == "__main__":
     main()
